@@ -1,0 +1,48 @@
+/* src/components/Navbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #111;
+  color: white;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-brand .brand-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #38b2ac;
+  text-decoration: none;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navbar-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar-links li a:hover {
+  color: #38b2ac;
+}
+
+.login-btn {
+  border: 1px solid #38b2ac;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.sign-up {
+  border: 1px solid #38b2ac;
+  padding: 6px 12px;
+  border-radius: 6px;
+}

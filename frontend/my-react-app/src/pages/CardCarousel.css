@@ -1,0 +1,12 @@
+.carousel-wrapper {
+  width: 100%;
+  max-width: 360px;
+  margin: 2rem auto;
+}
+
+.carousel-card {
+  width: 100%;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  transition: opacity 1s ease-in-out;
+}

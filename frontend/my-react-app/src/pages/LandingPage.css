@@ -1,0 +1,150 @@
+/* src/pages/LandingPage.css */
+/* Add this to LandingPage.css */
+/* Reset default spacing */
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.landing-container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #1a1a1a, #000);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 2rem; /* increased right padding */
+  text-align: center;
+  overflow-x: hidden;  /* prevents card from spilling */
+}
+
+
+.landing-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+}
+
+.highlight {
+  color: #38b2ac;
+}
+
+.landing-subtitle {
+  font-size: 1.2rem;
+  color: #ccc;
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .button-group {
+    flex-direction: row;
+  }
+}
+
+.primary-button,
+.outline-button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.primary-button {
+  background-color: #38b2ac;
+  color: white;
+  border: none;
+}
+
+.primary-button:hover {
+  background-color: #319795;
+}
+
+.outline-button {
+  background: transparent;
+  border: 2px solid #38b2ac;
+  color: #38b2ac;
+}
+
+.outline-button:hover {
+  background-color: #234e52;
+  color: white;
+}
+
+.demo-image-wrapper {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.demo-image {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 480px) {
+  .demo-image {
+    max-width: 90vw;
+  }
+}
+
+.landing-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  justify-content: space-between;
+  align-items: center; /* ✅ default on mobile */
+}
+
+.landing-text {
+  max-width: 500px;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.landing-carousel {
+  width: 100%;
+  max-width: 360px;
+  margin-right: 1rem;
+  margin-bottom: 12rem;
+}
+
+@media (min-width: 768px) {
+  .landing-content {
+    flex-direction: row;
+    align-items: flex-start; /* ✅ force top alignment */
+  }
+
+  .landing-text {
+    max-width: 500px;
+    text-align: left;
+  }
+
+  .landing-carousel {
+    max-width: 360px;
+    margin-top: 0; /* ✅ ensure no vertical offset */
+  }
+}
+
+.landing-carousel > * {
+  margin-top: 0 !important;
+}
+  
+
