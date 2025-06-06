@@ -28,32 +28,43 @@ const Dashboard = () => {
   const [profile, setProfile] = useState(null);
   const [leetcode, setLeetCode] = useState(null);
 
-  useEffect(() => {
-    if (rawUser) {
-      const userObj = JSON.parse(decodeURIComponent(rawUser));
-      setProfile(userObj);
-      localStorage.setItem('github_user', JSON.stringify(userObj));
-    } else {
-      const saved = localStorage.getItem('github_user');
-      if (saved) setProfile(JSON.parse(saved));
-    }
+useEffect(() => {
+  // Clear previous user data if new login detected
+  if (rawUser) {
+    localStorage.removeItem('leetcode_user');
+  }
 
-    if (leetUser) {
-      fetch(`https://leetcode-stats-api.herokuapp.com/${leetUser}`)
+  if (leetUser) {
+    localStorage.removeItem('github_user');
+  }
+
+  // GitHub section
+  if (rawUser) {
+    const userObj = JSON.parse(decodeURIComponent(rawUser));
+    setProfile(userObj);
+    localStorage.setItem('github_user', JSON.stringify(userObj));
+  } else {
+    const savedGitHub = localStorage.getItem('github_user');
+    if (savedGitHub) setProfile(JSON.parse(savedGitHub));
+  }
+
+  // LeetCode section
+  if (leetUser) {
+    fetch(`https://leetcode-stats-api.herokuapp.com/${leetUser}`)
+      .then(res => res.json())
+      .then(data => {
+        setLeetCode(data);
+        localStorage.setItem('leetcode_user', leetUser);
+      });
+  } else {
+    const savedLeet = localStorage.getItem('leetcode_user');
+    if (savedLeet) {
+      fetch(`https://leetcode-stats-api.herokuapp.com/${savedLeet}`)
         .then(res => res.json())
-        .then(data => {
-          setLeetCode(data);
-          localStorage.setItem('leetcode_user', leetUser);
-        });
-    } else {
-      const savedLeet = localStorage.getItem('leetcode_user');
-      if (savedLeet) {
-        fetch(`https://leetcode-stats-api.herokuapp.com/${savedLeet}`)
-          .then(res => res.json())
-          .then(data => setLeetCode(data));
-      }
+        .then(data => setLeetCode(data));
     }
-  }, [rawUser, leetUser]);
+  }
+}, [rawUser, leetUser]);
 
   const connectLeetCode = () => {
     const username = prompt('Enter your LeetCode username:');
