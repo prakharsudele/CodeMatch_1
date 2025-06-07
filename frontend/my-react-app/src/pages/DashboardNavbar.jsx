@@ -12,7 +12,19 @@ const DashboardNavbar = () => {
         <li><Link to="/swipe">Swipe</Link></li>
         <li><Link to="/chat">Chat</Link></li>
         <li><Link to="/#about">About</Link></li>
-        <li><button onClick={() => alert('TODO: implement logout')}>Logout</button></li>
+        <li>
+  <button
+    className="logout-button"
+    onClick={() => {
+      localStorage.removeItem('github_user');
+      localStorage.removeItem('leetcode_user');
+      window.location.href = '/';
+    }}
+  >
+    Logout
+  </button>
+</li>
+
       </ul>
     </nav>
   );
